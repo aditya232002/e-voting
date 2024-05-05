@@ -22,6 +22,20 @@
               <input type="text" placeholder="Name" name="first_name" required />
             </div>
             <div class="input-field">
+              <i class="fas fa-graduation-cap"></i>
+              <select name="department" required>
+                <option value="" disabled selected>Select Department</option>
+                <option value="CSE">Computer Science & Engineering</option>
+                <option value="Civil">Civil Engineering</option>
+                <option value="DS">Data Science</option>
+                <option value="AIML">Artificial Intelligence & Machine Learning</option>
+                <option value="EnTC">Electronics & Telecommunication</option>
+                <option value="Mechanical">Mechanical Engineering</option>
+                <option value="Chemical">Chemical Engineering</option>
+                <option value="Architecture">Architecture</option>
+              </select>
+            </div>
+            <div class="input-field">
               <i class="fas fa-envelope"></i>
               <input type="email" placeholder="Email"  name="email_address" required />
             </div>
@@ -31,34 +45,26 @@
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="ConfirmPassword" name="confirm_password"/>
+              <input type="password" placeholder="Confirm Password" name="confirm_password"/>
             </div>
-            <input type="submit" class="btn" value="Sign up" />
            
-            
+            <input type="submit" class="btn" value="Sign up" />
           </form>
         </div>
       </div>
-
       <div class="panels-container">
         <div class="panel left-panel">
           <div class="content">
             <h3>One of us?</h3>
             <p>
-              If you have already signed up , that's great !! 
-              Please LOGIN 
+              If you have already signed up, that's great!! Please LOGIN.
             </p>
-            <a href="/login"><button class="btn transparent" id="sign-up-btn">
-              Login
-            </button>
-            </a>
+            <a href="/login"><button class="btn transparent" id="sign-up-btn">Login</button></a>
           </div>
           <img src="img/home_page.png" class="image" alt="" />
         </div>
       </div>
-
     </div>
-
     <script></script>
   </body>
 </html>
