@@ -81,7 +81,11 @@
                                   <h4 class="card-title">User Manual</h4>
                               </div>
                               <div class="card-body">
-                                  <h4>Welcome </h4>
+                                <!-- <h4>Welcome</h4> -->
+                                 <!-- <h1>Welcome, <%= req.query.first_name %></h1> -->
+                                 <h1 id="welcome-message"></h1>
+                                 <h1 id="dept"></h1>
+  
                                   <h5>These are few Guidelines for the user:</h5>
                                   <h5>1. Voter Registration</h5>
                                   <ul>
@@ -100,8 +104,50 @@
                                           verification.</li>
                                       <li>After entering the correct OTP, the user will get successfully registered.</li>
                                   </ul>
+                                  <h5>2. How to create a MetaMask Wallet</h5>
+                                  <p>MetaMask is a cryptocurrency wallet used to interact with the Ethereum blockchain. It
+                                      can be accessed through an app or through a browser extension.</p>
 
-                                  <h5>2. Voting Process</h5>
+                                  <li>Step 1: Download MetaMask wallet</li>
+                                  <p>Go to <a href="https://metamask.io/" target="_blank">https://metamask.io/</a> and click on
+                                      “Download”. Choose your preferred browser or mobile application and install
+                                      the MetaMask extension.</p>
+
+                                  <li>Step 2: MetaMask wallet installation</li>
+                                  <p>Click on the MetaMask extension and click on “Get Started”.</p>
+
+                                  <p>You can either import an existent wallet using the seed phrase or create a new one.</p>
+
+                                  <li>Step 3: How to create a new MetaMask wallet</li>
+
+                                  <p>Click on “Create a Wallet” and on the next window click on “I agree” if you would like
+                                      to help improve MetaMask or click on “No Thanks” to proceed.</p>
+
+                                  <li>Step 4: Create a strong password for your wallet.</li>
+
+                                  <li>Step 5: Securely store the seed phrase for your wallet</li>
+                                  
+                                  <p>Click on “Click here to reveal secret words” to show the seed phrase.</p>
+
+                                  <p>MetaMask requires that you store your seed phrase in a safe place. It is the only way to
+                                      recover your funds should your device crash or your browser reset. We recommend
+                                      you write it down. The most common method is to write your 12-word phrase on a
+                                      piece of paper and store it safely in a place where only you have access. Note: if
+                                      you lose your seed phrase, MetaMask can’t help you recover your wallet and your
+                                      funds will be lost forever.</p>
+
+                                  <p>Never share your seed phrase or your private key to anyone or any site unless you
+                                      want them to have full control over your funds.</p>
+
+                                  <p>Click on “Next”.</p>
+
+                                  <li>Step 6: Seed phrase confirmation</li>
+                                  <p>Confirm your secret backup phrase by clicking on each word in the order in which the
+                                      words were presented on the previous screen. Click on “Confirm” to
+                                      proceed.</p>
+
+
+                                  <h5>3. Voting Process</h5>
                                   <ul>
                                       <li>Overall, the voting process is divided into three phases. All of which will be
                                           initialized and terminated by the admin. Users have to participate in the
@@ -121,45 +167,7 @@
                                           “Result” section.</li>
                                   </ol>
 
-                                  <h5>3. How to create a MetaMask Wallet</h5>
-                                  <p>MetaMask is a cryptocurrency wallet used to interact with the Ethereum blockchain. It
-                                      can be accessed through an app or through a browser extension.</p>
-
-                                  <li>Step 1: Download MetaMask wallet</li>
-                                  <p>Go to <a href="https://metamask.io/" target="_blank">https://metamask.io/</a> and click on
-                                      “Download”. Choose your preferred browser or mobile application and install
-                                      the MetaMask extension.</p>
-
-                                  <li>Step 2: MetaMask wallet installation</li>
-                                  <p>Click on the MetaMask extension and click on “Get Started”.</p>
-
-                                  <p>You can either import an existent wallet using the seed phrase or create a new one.</p>
-
-                                  <li>Step 3: How to create a new MetaMask wallet</li>
-                                  <p>Click on “Create a Wallet” and on the next window click on “I agree” if you would like
-                                      to help improve MetaMask or click on “No Thanks” to proceed.</p>
-
-                                  <li>Step 4: Create a strong password for your wallet.</li>
-
-                                  <li>Step 5: Securely store the seed phrase for your wallet</li>
-                                  <p>Click on “Click here to reveal secret words” to show the seed phrase.</p>
-
-                                  <p>MetaMask requires that you store your seed phrase in a safe place. It is the only way to
-                                      recover your funds should your device crash or your browser reset. We recommend
-                                      you write it down. The most common method is to write your 12-word phrase on a
-                                      piece of paper and store it safely in a place where only you have access. Note: if
-                                      you lose your seed phrase, MetaMask can’t help you recover your wallet and your
-                                      funds will be lost forever.</p>
-
-                                  <p>Never share your seed phrase or your private key to anyone or any site unless you
-                                      want them to have full control over your funds.</p>
-
-                                  <p>Click on “Next”.</p>
-
-                                  <li>Step 6: Seed phrase confirmation</li>
-                                  <p>Confirm your secret backup phrase by clicking on each word in the order in which the
-                                      words were presented on the previous screen. Click on “Confirm” to
-                                      proceed.</p>
+                                  
 <!-- 
                                   <p>Congratulations! Your MetaMask wallet has been set up successfully. You can now
                                       access your wallet by clicking on the MetaMask icon at the top-right-end corner of
@@ -384,6 +392,43 @@
           charset="utf-8"
           type="text/javascript">
   </script>
+
+<script>
+  // Extract query parameters from the URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const firstName = urlParams.get('first_name');
+  const department = urlParams.get('dept');
+
+  if(firstName!==null && department!==null){
+
+    localStorage.setItem('username', firstName);
+  localStorage.setItem('department', department);
+
+  document.getElementById('welcome-message').textContent = 'Welcome, ' + firstName;
+  document.getElementById('dept').textContent = 'Department: ' + department;
+
+  document.querySelector('.nav-item a[href="/dashboard"] p').textContent = `Voting-Area (${department})`;
+  }
+
+   firstName = localStorage.getItem('username');
+   department = localStorage.getItem('department');
+
+  // Update the HTML content with the extracted data
+  document.getElementById('welcome-message').textContent = 'Welcome, ' + firstName;
+  document.getElementById('dept').textContent = 'Department: ' + department;
+
+  document.querySelector('.nav-item a[href="/dashboard"] p').textContent = `Voting-Area (${department})`;
+
+</script>
+
+<!-- <script>
+  document.addEventListener('DOMContentLoaded', function() {
+      // Retrieve session user data
+      var sessionUserData = <%= JSON.stringify(session.userData) %>;
+      // Log session user data to console
+      console.log('Session User Data:', sessionUserData);
+  });
+</script> -->
   </body>
   
   </html>
